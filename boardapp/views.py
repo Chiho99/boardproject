@@ -28,3 +28,6 @@ def loginfunc(request):
             # Return an 'invalid login' error message.
             return render(request, 'login.html', {'context':'not logged in'})
     return render(request, 'login.html', {'context':'get method'})
+
+def listfunc(request):
+    return render(request, 'list.html', {})
