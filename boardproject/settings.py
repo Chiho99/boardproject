@@ -120,7 +120,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
+# css
+STATIC_URL = '/sta/'
+
+# for deploy
+# $ python manage.py collectstatic
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+STATICFILES_DIRS = [str(BASE_DIR / 'static')]
 
 # upload images
 #save to media directory

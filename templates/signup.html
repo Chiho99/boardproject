@@ -1,4 +1,9 @@
 {% extends 'base.html' %} 
+{% load static %}
+
+{% block customcss %}
+  <link href="{% static 'style.css' %}" rel="stylesheet">
+{% endblock customcss %}
 
 {% block content %}
 <body class="text-center" data-new-gr-c-s-check-loaded="14.987.0" data-gr-ext-installed="">
