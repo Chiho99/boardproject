@@ -3,13 +3,15 @@
 {% block header %}
 <div class="alert alert-primary" role="alert">
   <h3>Social Networking Service</h3>
+  <a href="{% url 'create' %}" class="btn alert-danger">投稿する</a>
+
 </div>
 {% endblock header %}
 
 {% block content %}
 {% comment %} {% if user.is_authenticated %} {% endcomment %}
 <div class="container">
-    {% for item in object_list %}
+  {% for item in object_list %}
   <div class="alert alert-success" role="alert">
     <p>タイトル：<a href="{% url 'detail' item.pk %}">{{ item.title }}</a></p>
     <p>投稿者：{{ item.post_user}}</p>

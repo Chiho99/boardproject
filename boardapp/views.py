@@ -4,7 +4,8 @@ from django.db import IntegrityError
 from django.contrib.auth import authenticate, login, logout
 from .models import BoardModel
 from django.contrib.auth.decorators import login_required
-
+from django.views.generic import CreateView
+from django.urls import reverse_lazy
 # Create your views here.
 def signupfunc(request):
     if request.method == "POST":
@@ -47,6 +48,23 @@ def detailfunc(request, pk):
 
 def goodfunc(request, pk):
     object = BoardModel.objects.get(pk=pk)
-    object.good = +1
+    object.good = object.good + 1
     object.save()
     return redirect('list')
+
+def readfunc(request, pk):
+    object = BoardModel.objects.get(pk=pk)
+    username = request.user.get_username()
+    if username in object.readtext:
+        return redirect('list')
+    else:
+        object.read = object.read + 1
+        object.readtext = object.readtext + ' ' + username
+        object.save()
+        return redirect('list')
+
+class Boardcreate(CreateView):
+    template_name = 'create.html'
+    model = BoardModel
+    fields = ('title', 'content', 'post_user', 'imgs')
+    success_url = reverse_lazy('list')

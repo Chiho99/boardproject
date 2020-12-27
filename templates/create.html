@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<form method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+<p>タイトル：<input type="text" name="title"></P>
+<p>投稿：<input type="text" name="content"></P>
+<p>image：<input type="file" name="imgs"></P>
+<p><input type="hidden" name="post_user" value="{{ user.username }}"></P>
+{% comment %} create button {% endcomment %}
+<input type="submit" value="create">
+<a href="{% url 'list'%}">一覧に戻る</a>
+</form>
+{% else %}
+<a href="{% url 'login' %}">please login</a>
+{% endif %}
+{% endblock content %}
