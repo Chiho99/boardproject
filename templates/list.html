@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
 {% block header %}
-<div class="alert alert-primary" role="alert">
+<div class="alert alert-primary text-center" role="alert">
   <h3>Social Networking Service</h3>
-  <a href="{% url 'create' %}" class="btn alert-danger">投稿する</a>
+  <a href="{% url 'create' %}" class="btn alert-danger">Create</a>
 
 </div>
 {% endblock header %}
@@ -12,9 +12,9 @@
 {% comment %} {% if user.is_authenticated %} {% endcomment %}
 <div class="container">
   {% for item in object_list %}
-  <div class="alert alert-success" role="alert">
-    <p>タイトル：<a href="{% url 'detail' item.pk %}">{{ item.title }}</a></p>
-    <p>投稿者：{{ item.post_user}}</p>
+  <div class="alert alert-info" role="alert">
+    <p>Title：<a href="{% url 'detail' item.pk %}">{{ item.title }}</a></p>
+    <p>User：{{ item.post_user}}</p>
     {% comment %} <img src="" alt="img_post"> {% endcomment %}
     <a href="#" class="btn btn-primary disabled" role="button" aria-pressed="true">Like：{{item.good}}</a>
     <a href="#" class="btn btn-secondary disabled" role="button" aria-pressed="true">Read：{{item.read}}</a>

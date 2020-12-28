@@ -9,15 +9,16 @@
 <body class="text-center" data-new-gr-c-s-check-loaded="14.987.0" data-gr-ext-installed="">
   <form class="form-signin" method="POST">
   {% csrf_token %}
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
     {{ error }}
     <label for="inputEmail" class="sr-only">Email address</label>
     <input type="text" id="inputEmail" class="form-control" placeholder="username" name="username" required autofocus/>
     <label for="inputPassword" class="sr-only">Password</label>
     <input type="password" id="inputPassword" class="form-control" placeholder="password" name="password" required/>
     <button class="btn btn-lg btn-primary btn-block" type="submit">
-      Sign in
+      Sign up
     </button>
+    <a href="{% url 'login' %}">Already Have an Account→</a>
     <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
   </form>
 </body>

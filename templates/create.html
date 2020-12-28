@@ -2,16 +2,22 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-<form method="POST" enctype="multipart/form-data">
-{% csrf_token %}
-<p>タイトル：<input type="text" name="title"></P>
-<p>投稿：<input type="text" name="content"></P>
-<p>image：<input type="file" name="imgs"></P>
-<p><input type="hidden" name="post_user" value="{{ user.username }}"></P>
-{% comment %} create button {% endcomment %}
-<input type="submit" value="create">
-<a href="{% url 'list'%}">一覧に戻る</a>
-</form>
+<div class="alert alert-primary text-center" role="alert">
+<h4>Create a Post</h4>
+</div>
+<div class="container text-center">
+  <div class=" alert alert-primary">
+    <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+      <p>Title：<input type="text" name="title"></P>
+      <p>What's on your mind?：<input type="text" name="content"></P>
+      <p>image：<input type="file" name="imgs"></P>
+      <p><input type="hidden" name="post_user" value="{{ user.username }}"></P>
+      <input type="submit" value="create">
+    </form>
+  </div>
+  <a href="{% url 'list'%}">Back→</a>
+</div>
 {% else %}
 <a href="{% url 'login' %}">please login</a>
 {% endif %}

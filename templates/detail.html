@@ -2,22 +2,22 @@
 
 {% block header %}
 <div class="alert alert-primary" role="alert">
-  <h3>detail page</h3>
+  <h3>Detail page</h3>
 </div>
 {% endblock header %}
 
 {% block content %}
 {% comment %} {% if user.is_authenticated %} {% endcomment %}
 <div class="container">
-  <div class="alert alert-success" role="alert">
-    <p>タイトル: {{ object.title }}</p>
-    <p>投稿者:{{ object.post_user}}</p>
+  <div class="alert alert-info" role="alert">
+    <p>Title：{{ object.title }}</p>
+    <p>User：{{ object.post_user}}</p>
     <p><img src="{{ object.imgs.url }}" width="30%"></p>
     <a href="{% url 'good' object.pk %}" class="btn btn-primary" role="button" aria-pressed="true">Like</a>
     <a href="{% url 'read' object.pk %}" class="btn btn-secondary" role="button" aria-pressed="true">Read</a>
   </div>
-  <a href="{% url 'list' %}">一覧に戻る</a><br>
-  <a href="{% url 'logout' %}">logout</a>
+  <a href="{% url 'list' %}">Back→</a><br>
+  <a href="{% url 'logout' %}">logout→</a>
   
 </div>
 {% comment %} {% else %}
